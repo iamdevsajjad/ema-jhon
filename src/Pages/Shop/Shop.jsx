@@ -3,7 +3,18 @@ import Product from "../Components/Product/Product";
 import "./Shop.css";
 
 const Shop = () => {
-  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([])
+const [products, setProducts] = useState([]);
+
+
+  const handleAddToCart = (product) => {
+    const newCart = [...cart, product];
+    setCart(newCart)
+  }
+
+
+
+  
   useEffect(() => {
     fetch("products.json")
       .then((res) => res.json())
@@ -15,12 +26,16 @@ const Shop = () => {
       <div className="products-container grid grid-cols-1">
         <div className="grid grid-cols-3 gap-4">
           {products?.map((product) => (
-            <Product key={product.id} product={product} />
+            <Product 
+            key={product.id} 
+            product={product}
+            handleAddToCart = {handleAddToCart}
+            />
           ))}
         </div>
       </div>
-      <div className="cart-container ">
-        order summery.
+      <div className="cart-container bg-[#FFE0B3] ">
+        order summery.{cart?.length}
       </div>
     </div>
   );
