@@ -1,9 +1,10 @@
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import React from "react";
 
-const Product = (props) => {
-  const { name, img, ratings, seller, price } = props?.product;
-  const  handleAddToCart  = props.handleAddToCart;
+const Product = ({product , handleAddToCart}) => {
+
+ 
+  const { name, img, ratings, seller, price  } = product;
   return (
     <div className="full-cart w-[300px] h-[509px] border mx-auto items-center rounded-sm relative">
       <img
@@ -20,7 +21,7 @@ const Product = (props) => {
         </div>
       </div>
       <button
-        onClick={() => handleAddToCart()}
+        onClick={() => handleAddToCart(product)}
         className="w-[300px] h-[48px] bg-[#FFE0B3] text-[15px] absolute bottom-0 hover:bg-orange-300"
       >
         Add to Cart{" "}

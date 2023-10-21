@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
+import OrderSummary from "../Components/OrderSummary/OrderSummary";
 import Product from "../Components/Product/Product";
 import "./Shop.css";
 
 const Shop = () => {
-  const [cart, setCart] = useState([])
-const [products, setProducts] = useState([]);
-
+  const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const handleAddToCart = (product) => {
     const newCart = [...cart, product];
-    setCart(newCart)
+    setCart(newCart);
   }
-
-
-
   
+
+
   useEffect(() => {
     fetch("products.json")
       .then((res) => res.json())
@@ -26,16 +25,18 @@ const [products, setProducts] = useState([]);
       <div className="products-container grid grid-cols-1">
         <div className="grid grid-cols-3 gap-4">
           {products?.map((product) => (
-            <Product 
-            key={product.id} 
-            product={product}
-            handleAddToCart = {handleAddToCart}
+            <Product
+              key={product.id}
+              product={product}
+              handleAddToCart={handleAddToCart}
             />
           ))}
         </div>
       </div>
-      <div className="cart-container bg-[#FFE0B3] ">
-        order summery.{cart?.length}
+      <div className="cart-container ">
+        <OrderSummary 
+        cart={cart}
+        />
       </div>
     </div>
   );
