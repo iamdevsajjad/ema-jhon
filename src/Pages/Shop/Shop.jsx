@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { getShoppingCart } from "../../Utilities/FakeDb";
 import OrderSummary from "../Components/OrderSummary/OrderSummary";
 import Product from "../Components/Product/Product";
 import "./Shop.css";
@@ -10,9 +11,20 @@ const Shop = () => {
   const handleAddToCart = (product) => {
     const newCart = [...cart, product];
     setCart(newCart);
-  }
-  
+  };
 
+  useEffect(() => {
+    () => {
+      const storedCart = getShoppingCart();
+      const savedCart = []
+      for(const id in storedCart){
+        const addedProduct = products.find(product => product.id ===id);
+        const quantity = storedCart[id]
+        addedProduct.quantity = quantity;
+        savedCart.push(addedProduct)
+      }
+    },[products];
+  });
 
   useEffect(() => {
     fetch("products.json")
@@ -34,9 +46,7 @@ const Shop = () => {
         </div>
       </div>
       <div className="cart-container ">
-        <OrderSummary 
-        cart={cart}
-        />
+        <OrderSummary cart={cart} />
       </div>
     </div>
   );
