@@ -33,9 +33,9 @@ const Shop = () => {
   }, []);
 
   return (
-    <div className="full-component">
-      <div className="products-container grid grid-cols-1">
-        <div className="grid grid-cols-3 gap-4">
+    <div className="full-component ">
+      <div className="products-container ">
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
           {products?.map((product) => (
             <Product
               key={product.id}
@@ -45,7 +45,7 @@ const Shop = () => {
           ))}
         </div>
       </div>
-      <div className="cart-container ">
+      <div className="cart-container md:static hidden md:block">
         <OrderSummary cart={cart} />
       </div>
     </div>
