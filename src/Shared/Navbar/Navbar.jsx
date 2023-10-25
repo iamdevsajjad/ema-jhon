@@ -8,7 +8,7 @@ const Navbar = () => {
 
     return (
         <header className='bg-[#1C2B35] sticky top-0 z-10'>
-             <span onClick={() => setOpen(!open) } className='md:hidden text-white absolute right-5 top-3 '>
+             <span onClick={() => setOpen(!open) } className='md:hidden text-white absolute right-5 top-3 cursor-pointer'>
                 {
                     open===true? <XMarkIcon className='w-8'/> :<Bars3Icon className='w-8'/>
                 }

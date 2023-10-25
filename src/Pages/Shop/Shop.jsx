@@ -34,7 +34,7 @@ const Shop = () => {
 
   return (
     <div className="full-component ">
-      <div className="products-container ">
+      <div className="md:products-container ">
         <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
           {products?.map((product) => (
             <Product
